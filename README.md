@@ -1,5 +1,5 @@
 # carselbv
-automobile
+Automobile Web Application
 Built in Symfony Framework for PHP
 
 inclusive: 
