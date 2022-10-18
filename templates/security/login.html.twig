@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-4 fw-bold lh-1 mb-3">CARSELB.com</h1>
+                <h4 class="col-lg-10 fs-4">Easy way to find the right car</h4>
+                <p class="col-lg-10 fs-4 lead">
+                    Carselb is a leading digital marketplace for the automotive industry that connects car shoppers with sellers.
+                </p>
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5">
+                <form method="post" class="p-4 p-md-5 border rounded-3 alert alert-light shadow">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+
+                    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <div class="form-floating mb-3">
+                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+                        <label for="inputUsername">Username</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                        <label for="inputPassword">Password</label>
+                    </div>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+                    <hr class="my-4">
+                    <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
