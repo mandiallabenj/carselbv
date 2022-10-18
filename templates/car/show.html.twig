@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sell Car{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row my-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Cars</a></li>
+                    <li class="breadcrumb-item"><a href="#">{{ car.make }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ car.title }}</li>
+                </ol>
+            </nav>
+        </div>
+       <div class="row">
+           <div class="row my-3 p-4 shadow">
+           <div class="col">
+               <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('{{ asset('/uploads/' ~ car.carFilename) }}');">
+                   <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                       <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{ car.title | upper }}</h2>
+                       <ul class="d-flex list-unstyled mt-auto">
+                           <li class="me-auto">
+                               <span class="badge rounded-pill bg-primary">
+                               <i width="32" height="32" class="bi bi-check-circle"></i> Certified
+                               </span>
+                           </li>
+                           <li class="d-flex align-items-center me-3">
+                               <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                               <small><i class="bi bi-geo-alt"></i> {{ car.location }}</small>
+                           </li>
+                           <li class="d-flex align-items-center">
+                               <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                               <small>{{ car.createdAt | ago }}</small>
+                           </li>
+                       </ul>
+                   </div>
+               </div>
+           </div>
+           <div class="col">
+               <div class="card border-0 p-4">
+                   <div class="card-body">
+                       <h4 class="card-title text-dark">
+
+                           {% if car.carCondition == 'New' %}
+                               <span class="badge rounded-pill bg-warning text-dark">
+                                         New
+                                     </span>
+
+                           {% endif %}
+                       </h4>
+                       <h1 class="card-subtitle my-1 text-muted">
+                           {{ car.price | format_currency('UGX') }}
+                       </h1>
+                       <div class="card-text" style="font-size: 14px;">
+                           <div class="d-flex my-4 flex-row">
+                               <div>
+                                   <p class="pe-2"> <i class="bi bi-car-front"></i> {{ car.make }}</p>
+                               </div>
+                               <div>
+                                   <p class="pe-2">
+                                       <i class="bi bi-calendar-date"></i> {{ car.modelYear }}</p>
+                               </div>
+                               <div>
+                                   <p class="pe-2">
+                                       <i class="bi bi-geo-alt"></i> {{ car.location }}</p>
+                               </div>
+
+                               <div>
+                                   <span style="background:#D2f4EA;" class="pe-1 badge rounded-pill text-secondary"><small>Negotiable </small> </span>
+                               </div>
+                           </div>
+                       </div>
+
+                       <div>
+
+                       </div>
+                       <div class="d-flex align-items-center">
+                           <div class="flex-shrink-0">
+                               <img style="width: 50px;height: 50px" class="rounded-circle" src="{{ asset('/images/allan.jpeg') }}" alt="...">
+                           </div>
+                           <div class="flex-grow-1 ms-3">
+                               <h6>carselb investments ltd</h6>
+                               <div class="d-flex align-items-center flex-wrap">
+                                   <!-- Rating -->
+                                   <div class="d-flex gap-1">
+                                       {%  for index in 1..5 %}
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       {% endfor %}
+                                   </div>
+                                   <!-- End Rating -->
+                                   <div class="ms-1">
+                                       <span class="fw-semibold text-dark me-1">4.91</span>
+                                       <span>(1.5k+ reviews)</span>
+                                   </div>
+                               </div>
+                               <p style="font-size: 12px">This is some content from a media component.
+                                   You can replace this with any content.
+                               </p>
+                           </div>
+                       </div>
+                       <div class="d-flex my-4 justify-content-between">
+                           <div class="d-flex column">
+                               <button class="btn btn-outline-secondary shadow shadow-sm">
+                                   <i class="bi bi-phone"></i> Contact Seller
+                               </button>
+                           </div>
+                           <div>
+                               <button class="btn">
+                                   <i class="bi bi-share"></i>
+                               </button>
+                           </div>
+                           <div>
+                               <button class="btn">
+                                   <i class="bi bi-heart"></i>
+                               </button>
+                           </div>
+                       </div>
+
+
+                   </div>
+               </div>
+           </div>
+           </div>
+       </div>
+        <div class="row">
+            <div class="py-3 mb-3">
+                <h2 class="h4 text-secondary mb-4">Specifications</h2>
+                <hr>
+                <div class="text-secondary row">
+                    <div class="col-lg-6 col-md-12 col-sm-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><strong>Manufacturing Year:</strong>
+                                <span class="ms-1">2018</span>
+                            </li>
+                            <li class="mb-2">
+                                <strong>Mileage:</strong><span class="ms-1">25K miles</span>
+                            </li>
+                            <li class="mb-2">
+                                <strong>Body Type:</strong><span class="ms-1">Convertible</span>
+                            </li>
+                            <li class="mb-2">
+                                <strong>Drivetrain:</strong><span class="ms-1">Front Wheel Drive</span>
+                            </li>
+                            <li class="mb-2"><strong>Engine:</strong><span class="ms-1">2.5L Turbo 6 Cylinder</span></li>
+                            <li class="mb-2"><strong>Transmission:</strong><span class="ms-1">7-Speed Shiftable Automatic</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><strong>Fuel Type:</strong><span class="ms-1">Gasoline</span></li>
+                            <li class="mb-2"><strong>City MPG:</strong><span class="ms-1">20</span><i class="fi-alert-circle fs-sm text-primary ms-2" aria-label="Vrified by seller"></i></li>
+                            <li class="mb-2"><strong>Highway MPG:</strong><span class="ms-1">29</span><i class="fi-alert-circle fs-sm text-primary ms-2" aria-label="Vrified by seller"></i></li>
+                            <li class="mb-2"><strong>Exterior Color:</strong><span class="ms-1">Aspen White</span></li>
+                            <li class="mb-2"><strong>Interior Color:</strong><span class="ms-1">Charcoal</span></li>
+                            <li class="mb-2"><strong>VIN:</strong><span class="ms-1">2VW821AU9JM754284</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

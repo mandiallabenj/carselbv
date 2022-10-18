@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sell Car{% endblock %}
+
+{% block body %}
+    {%  include 'home/header.html.twig' %}
+
+    <div class="container">
+        <div class="row">
+                            {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">
+                    <div class="flash-notice">
+                        {{ message }}
+                    </div>
+            </div>
+                {% endfor %}
+
+            <div class="col-md-3"> &nbsp;</div>
+            <div class="col-md-6">
+                <hr class="my-5">
+                <div class="p-4 alert alert-light shadow">
+                    <div class="my-4 text-center">
+                        <h2>Basic Info</h2>
+                        <small class="">Each field is required in this form.</small>
+                        <br>
+                        <small class="">Note that any other information about car should be added in the desription.</small>
+                    </div>
+                    {{ form_start(carform) }}
+                    <div class="my-custom-class-for-errors">
+                        {{ form_errors(carform) }}
+                    </div>
+
+                                <div class="row g-3">
+                            <div class="col-sm-12">
+                                {{ form_row(carform.title) }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ form_row(carform.make) }}
+                            </div>
+
+                            <div class="col-md-4">
+                                {{ form_row(carform.model_year) }}
+                            </div>
+
+                            <div class="col-md-4">
+                                {{ form_row(carform.car_condition) }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ form_row(carform.price) }}
+                            </div>
+
+                            <div class="col-sm-6">
+                                {{ form_row(carform.location) }}
+                            </div>
+
+                            <div class="col-12">
+                                {{ form_row(carform.description) }}
+                            </div>
+
+                            <div class="col-md-12">
+                                {{ form_row(carform.carFilename) }}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-check my-4">
+                                <label class="form-check-label" for="agree-to-terms">Agree to terms</label>
+                                <input type="checkbox" class="form-check-input" id="agree-to-terms">
+                            </div>
+                        </div>
+                        <button class="w-100 my-3 btn btn-primary btn-lg" type="submit">Save</button>
+                    {{ form_end(carform) }}
+
+                </div>
+            </div>
+            <div class="col-md-3"> &nbsp;</div>
+        </div>
+
+    </div>
+{% endblock %}

@@ -6,13 +6,13 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="{{ path('app_home') }}" class="nav-link px-2 text-secondary">Home</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Catalog
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">List View</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_car_list_all') }}">List View</a></li>
                         <li><a class="dropdown-item" href="#">Grid View</a></li>
                     </ul>
                 </li>
@@ -48,14 +48,14 @@
                             <li><a class="dropdown-item" href="#">Reviews</a></li>
                             <li><a class="dropdown-item" href="#">Notifications</a></li>
                             <div class="dropdown-divider"></div>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-in-left"></i> Log Out</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_logout') }}"><i class="bi bi-box-arrow-in-left"></i> Log Out</a></li>
 
                         </ul>
                     </button>
                 {% else %}
-                    <a href="#" type="button" class="btn border-primary text-primary shadow me-2"><i class="bi bi-person"></i> Sign in</a>
+                    <a href="{{ path('app_login') }}" type="button" class="btn border-primary text-primary shadow me-2"><i class="bi bi-person"></i> Sign in</a>
                 {% endif %}
-                <a href="#"  class="btn btn-primary shadow text-white"> <i class="bi bi-plus-circle"></i> Sell Car</a>
+                <a href="{{ path('app_car_add') }}"  class="btn btn-primary shadow text-white"> <i class="bi bi-plus-circle"></i> Sell Car</a>
             </div>
         </div>
     </div>

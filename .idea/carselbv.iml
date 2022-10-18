@@ -138,6 +138,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/doctrine-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-time-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/twig/intl-extra" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/templating" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

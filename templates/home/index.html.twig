@@ -4,18 +4,49 @@
 
 {% block body %}
     {%  include 'home/header.html.twig' %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container-fluid parallax">
+    <div class="row bg-dark">
+        <div class="col-md-7">
+            <div class="p-4 my-4 rounded shadow shadow-sm">
+                <div class="col-md-8 px-0 text-white">
+                    <h1 class="display-1 text-warning fw-bold">CARSELB.com</h1>
+                    <hr class="my-2">
+                    <h1 class="display-4 fw-bold">Easy way to find the right car</h1>
+                    <hr class="my-2">
+                    <p class="lead my-3">
+                        Carselb is a leading digital marketplace for the automotive industry that connects car shoppers with sellers.
+                    </p>
+                    <hr class="my-2">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="p-4">
+                <div class=" alert alert-light shadow my-4 p-4 mx-auto">
+                    <h3 class="fw-bold">
+                        Find Car
+                    </h3>
+                    {% if app.user %}
+                        <h2>
+                            Welcome, {{ app.user.username }}
+                        </h2>
+                    {% endif %}
+                    <p class="col-md-8 lead">
+                        Browse over 200,000+ cars from around the country.
+                    </p>
+                    <div class="lead">
+                        <form class="form-control alert alert-light my-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
+                                <label for="floatingInputGrid">E.g Chevrolet Tahoe</label>
+                            </div>
+                            <button type="button" class="my-2 btn btn-lg shadow btn-warning"><i class="bi bi-search"></i> Search By </button>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/carselbv/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/carselbv/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
