@@ -26,7 +26,8 @@ class CarType extends AbstractType
                     'chevrolet' => 'chevrolet',
                     'bmw' => 'bmw',
                     'mercedes' => 'mercedes',
-                    'audi' => 'audi'
+                    'audi' => 'audi',
+                    'range rover' => 'range rover'
                 ]
             ])
             ->add('model_year')
