@@ -4,7 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Car;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\Query\QueryException;
 use Doctrine\Persistence\ManagerRegistry;
+use function PHPUnit\Framework\throwException;
 
 /**
  * @extends ServiceEntityRepository<Car>
@@ -21,30 +24,46 @@ class CarRepository extends ServiceEntityRepository
         parent::__construct($registry, Car::class);
     }
 
-    public function add(Car $entity, bool $flush = false): void
+    public function findOneCar($value)
     {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
-
-    public function remove(Car $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
-
-    public function findCarBy($value) {
-        return $this->createQueryBuilder('t')
+        $query = $this->createQueryBuilder('t')
             ->andWhere('t.id = :val')
             ->setParameter('val', $value)
+            ->orderBy('t.id','DESC');
+
+
+            try {
+                return $query
+                    ->getQuery()
+                    ->getOneOrNullResult();
+            } catch (NonUniqueResultException $e) {
+            throwException($e);
+            }
+
+    }
+
+    #find car by search value
+    public function findCarBySearch(string $value = null): array
+    {
+            $queryBuilder = $this->createQueryBuilder('t')
+                ->orderBy('t.id', 'DESC');
+
+
+        if($value){
+            $queryBuilder
+            ->andwhere('t.title LIKE :val OR t.description LIKE :val OR t.make LIKE :val')
+                ->setParameter('val','%' . $value . '%');
+
+        }
+
+        return $queryBuilder
+            ->setMaxResults(10)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getResult();
+    }
+
+    public function findBySearch(){
+
     }
 
 //    /**

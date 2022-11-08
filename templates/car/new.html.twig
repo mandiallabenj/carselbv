@@ -2,10 +2,9 @@
 
 {% block title %}Sell Car{% endblock %}
 
-{% block body %}
-    {%  include 'home/header.html.twig' %}
 
-    <div class="container">
+{% block body %}
+     <div class="container">
         <div class="row">
                             {% for message in app.flashes('notice') %}
             <div class="alert alert-success">
@@ -58,7 +57,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                {{ form_row(carform.carFilename) }}
+                                {{ form_row(carform.carFilename, {'class': 'js-reference-dropzone'}) }}
                             </div>
                         </div>
                         <div class="col-md-12">

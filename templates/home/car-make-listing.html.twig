@@ -1,0 +1,48 @@
+<div class="row bg-white">
+    <div class="d-flex justify-content-between p-4 my-1">
+        <div class="p-2"><h4 class="p-2">TOP BRANDS </h4></div>
+        <div class="p-2"><a href="{{ path('app_car_list_all') }}" class="btn btn-outline-secondary shadow-sm">View alL <i class="bi bi-arrow-right"></i></a> </div>
+    </div>
+</div>
+<div class="row bg-white p-4 my-2">
+<div class="owl-carousel owl-theme owl-lazy owl-loaded owl-drag">
+    <div class="owl-stage-outer">
+        <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 2376px;">
+            {% for i in 1..20 %}
+            <div class="owl-item active" style="width: 178px; margin-right: 20px;">
+                <div class="item">
+                    <div class="col mb-4">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <img style="width: 50px;height: 50px" class="rounded-circle" src="/images/allan.jpeg" alt="...">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6>carselb investments ltd</h6>
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <!-- Rating -->
+                                    <div class="d-flex gap-1">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                    </div>
+                                    <!-- End Rating -->
+                                    <div class="ms-1">
+                                        <span class="fw-semibold text-dark me-1">4.91</span>
+                                        <span>(1.5k+ reviews)</span>
+                                    </div>
+                                </div>
+                                <p style="font-size: 12px">This is some content from a media component.
+                                    You can replace this with any content.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>

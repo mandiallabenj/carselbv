@@ -3,7 +3,6 @@
 {% block title %}carselb.com!{% endblock %}
 
 {% block body %}
-    {%  include 'home/header.html.twig' %}
 <div class="container-fluid parallax">
     <div class="row bg-dark">
         <div class="col-md-7">
@@ -35,12 +34,12 @@
                         Browse over 200,000+ cars from around the country.
                     </p>
                     <div class="lead">
-                        <form class="form-control alert alert-light my-4">
+                        <form action="{{ path('app_car_list_results') }}" class="form-control alert alert-light my-4">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
+                                <input type="search" name="q" class="form-control" id="floatingInputGrid" required>
                                 <label for="floatingInputGrid">E.g Chevrolet Tahoe</label>
                             </div>
-                            <button type="button" class="my-2 btn btn-lg shadow btn-warning"><i class="bi bi-search"></i> Search By </button>
+                            <button type="submit" class="my-2 btn btn-lg shadow btn-warning"><i class="bi bi-search"></i> Search By </button>
 
                         </form>
                     </div>
@@ -48,9 +47,14 @@
             </div>
         </div>
     </div>
-
     <!-- top deal car listing -->
     {%  include 'home/top-deal-car-listing.html.twig' %}
+    <!-- top sellers listing -->
+    {% include 'home/top-sellers-listing.html.twig' %}
+    <!-- latest car listing -->
+    {%  include 'home/latest-car-listing.html.twig' %}
+    <!-- car make listing -->
+    {% include 'home/car-make-listing.html.twig' %}
 </div>
 {% endblock %}
 

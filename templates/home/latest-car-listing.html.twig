@@ -1,7 +1,7 @@
 <div class="row bg-white">
     <div class="d-flex justify-content-between p-4 my-1">
-        <div class="p-2"><h4 class="p-2">TOP DEALS</h4></div>
-        <div class="p-2"><a href="{{ path('app_car_list_all') }}" class="btn btn-outline-secondary shadow-sm">View all offers <i class="bi bi-arrow-right-circle"></i></a> </div>
+        <div class="p-2"><h4 class="p-2">LATEST</h4></div>
+        <div class="p-2"><a href="{{ path('app_car_list_all') }}" class="btn btn-outline-secondary shadow-sm">View alL <i class="bi bi-arrow-right"></i></a> </div>
     </div>
 </div>
 <div class="row bg-white p-4 my-2">
@@ -15,11 +15,11 @@
                         <!-- Card -->
                         <div class="card card-bordered shadow-none h-100">
                             <div class="card-pinned">
-                                <img style="height: 150px; min-width: 150px" class="card-img-top" src="{{ asset('/uploads/' ~cars.carFilename) }}" alt="Image Description">
+                                <img style="height: 170px" class="card-img-top" src="{{ asset('/uploads/' ~cars.carFilename) }}" alt="Image Description">
                             </div>
                             <div class="card-body">
                                 <h6 style="font-size: 10px" class="card-title  position-relative">
-                                    <a href="{{ path('app_car_show',{title: cars.title}) }}" class="text-dark"> {{ cars.title | upper }} </a>
+                                    <a href="/car/list/chevrolet%20tahoe" class="text-dark"> {{ cars.title | upper }} </a>
 
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
                                          New

@@ -1,5 +1,6 @@
-<header class="p-3 bg-white">
-    <div class="container">
+
+{% include 'home/topbar.html.twig' %}
+<div class="container mb-4">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                 <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
@@ -14,6 +15,9 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ path('app_car_list_all') }}">List View</a></li>
                         <li><a class="dropdown-item" href="#">Grid View</a></li>
+                        {% if is_granted('ROLE_USER') %}
+                        <li><a class="dropdown-item" href="{{ path('app_car_make_form') }}">Add Car Make</a></li>
+                        {% endif %}
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -59,4 +63,3 @@
             </div>
         </div>
     </div>
-</header>

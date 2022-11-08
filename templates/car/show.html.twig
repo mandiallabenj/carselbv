@@ -16,6 +16,112 @@
             </nav>
         </div>
        <div class="row">
+           <!-- intro -->
+           <div class="container col-xxl-8 px-4 py-5">
+               <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                   <div class="col-10 col-sm-12 col-lg-6">
+                       <img src="{{ asset('uploads/'~car.carFilename) }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                   </div>
+                   <div class="col-lg-6">
+                       <h1 class="display-5 fw-bold lh-1 mb-3">{{ car.title }} </a></h1> {% if car.carCondition == 'New' %}
+                           <span class="badge rounded-pill bg-warning text-dark">
+                                         New
+                                     </span>
+                       {% endif %}
+                       <div class="">
+                           <h1 class="my-1 text-muted">
+                                   {{ car.price | format_currency('UGX') }}
+                           </h1>
+                               <div class="" style="font-size: 14px;">
+                                   <div class="d-flex my-4 flex-row">
+                                       <div>
+                                           <p class="pe-2"> <i class="bi bi-car-front"></i> {{ car.make }}</p>
+                                       </div>
+                                       <div>
+                                           <p class="pe-2">
+                                               <i class="bi bi-calendar-date"></i> {{ car.modelYear }}</p>
+                                       </div>
+                                       <div>
+                                           <p class="pe-2">
+                                               <i class="bi bi-geo-alt"></i> {{ car.location }}</p>
+                                       </div>
+                                       <div>
+                                           <span style="background:#D2f4EA;" class="pe-1 badge rounded-pill text-secondary"><small>Negotiable </small> </span>
+                                       </div>
+                                       <div>
+                                           <p class="pe-2 float-end">
+                                               <small> Posted {{ car.createdAt | ago }}</small>
+                                           </p>
+                                       </div>
+                                   </div>
+                               </div>
+
+                               <div>
+
+                               </div>
+                               <div class="d-flex align-items-center">
+                                   <div class="flex-shrink-0">
+                                       <img style="width: 50px;height: 50px" class="rounded-circle" src="{{ asset('/uploads/take-flight.jpg') }}" alt="...">
+                                   </div>
+                                   <div class="flex-grow-1 ms-3">
+                                       <h6>By carselb investments ltd <span class="badge rounded-pill bg-primary">
+                               <i width="32" height="32" class="bi bi-check-circle"></i> Certified
+                               </span></h6>
+                                       <div class="d-flex align-items-center flex-wrap">
+                                           <!-- Rating -->
+                                           <div class="d-flex gap-1">
+                                               {%  for index in 1..5 %}
+                                                   <i class="bi bi-star-fill text-warning"></i>
+                                               {% endfor %}
+                                           </div>
+                                           <!-- End Rating -->
+                                           <div class="ms-1">
+                                               <span class="fw-semibold text-dark me-1">4.91</span>
+                                               <span>(1.5k+ reviews)</span>
+                                           </div>
+                                       </div>
+                                       <p style="font-size: 12px">This is some content from a media component.
+                                           You can replace this with any content.
+                                       </p>
+                                   </div>
+                               </div>
+
+
+                           </div>
+                       <div class="d-grid gap-2 my-3 d-md-flex justify-content-md-start">
+                           <button type="button" class="btn btn-primary px-4 me-md-2"><i class="bi bi-telephone"></i> CONTACT </button>
+                           <button type="button" class="btn btn-outline-secondary px-4"><i class="bi bi-heart"></i> Add to WishList </button>
+                       </div>
+                   </div>
+               </div>
+               <div class="row">
+                   <ul class="nav nav-tabs" id="myTab" role="tablist">
+                       <li class="nav-item" role="presentation">
+                           <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true"><i class="bi bi-grid"></i> Description</button>
+                       </li>
+                       <li class="nav-item" role="presentation">
+                           <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><i class="bi bi-car-front"></i> Specifications</button>
+                       </li>
+                       <li class="nav-item" role="presentation">
+                           <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+                       </li>
+                       <li class="nav-item" role="presentation">
+                           <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
+                       </li>
+                   </ul>
+                   <div class="tab-content" id="myTabContent">
+                       <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                           <p class="lead">Quickly design and customize responsive mobile-first
+                               sites with Bootstrap, the world’s most popular front-end open sourc
+                               e toolkit, featuring Sass variables and mixins, responsive grid system,
+                               extensive prebuilt components, and powerful JavaScript plugins.</p>
+                       </div>
+                       <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+                       <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
+                       <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+                   </div>
+               </div>
+           </div>
            <div class="row my-3 p-4 shadow">
            <div class="col">
                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('{{ asset('/uploads/' ~ car.carFilename) }}');">
@@ -82,7 +188,9 @@
                                <img style="width: 50px;height: 50px" class="rounded-circle" src="{{ asset('/images/allan.jpeg') }}" alt="...">
                            </div>
                            <div class="flex-grow-1 ms-3">
-                               <h6>carselb investments ltd</h6>
+                               <h6>carselb investments ltd <span class="badge rounded-pill bg-primary">
+                               <i width="32" height="32" class="bi bi-check-circle"></i> Certified
+                               </span></h6>
                                <div class="d-flex align-items-center flex-wrap">
                                    <!-- Rating -->
                                    <div class="d-flex gap-1">
