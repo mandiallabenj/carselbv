@@ -90,7 +90,7 @@ class CarController extends AbstractController
         $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
             $adapter,
             $request->query->get('page',1),
-            6
+            9
         );
 
         return $this->render('car/list.html.twig',[
@@ -109,7 +109,7 @@ class CarController extends AbstractController
         $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
             $adapter,
             $request->query->get('page',1),
-            6
+            9
         );
 
         return $this->render('car/list.html.twig',[

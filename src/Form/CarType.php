@@ -3,18 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Car;
-use App\Entity\CarMake;
-use App\Repository\CarMakeRepository;
-use App\Repository\CarRepository;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
-use function Sodium\add;
+
 
 class CarType extends AbstractType
 {
