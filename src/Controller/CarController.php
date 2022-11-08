@@ -10,12 +10,14 @@ use App\Form\CarType;
 use App\Repository\CarMakeRepository;
 use App\Repository\CarRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Pagerfanta\Pagerfanta;
 use function ApiPlatform\Symfony\Routing\getIriFromResource;
 
 class CarController extends AbstractController
@@ -81,27 +83,37 @@ class CarController extends AbstractController
         ]);
     }
     #[Route('/car/list', name:'app_car_list_all')]
-    public function list(ManagerRegistry $doctrine): Response
+    public function list(CarRepository $carRepository, Request $request): Response
     {
-        $carMakeList = $doctrine->getRepository(CarMake::class)->findAll();
-        $cars = $doctrine->getRepository(Car::class)->findAll();
+        $queryBuilder = $carRepository->findAll();
+        $adapter = new QueryAdapter($queryBuilder);
+        $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
+            $adapter,
+            $request->query->get('page',1),
+            6
+        );
+
         return $this->render('car/list.html.twig',[
-            'cars' => $cars,
-            'carMakeList' => $carMakeList,
+            'pager' => $pagerfanta,
         ]);
     }
 
-    #[Route('/car/search/results', name:'app_car_list_results')]
-    public function results(CarRepository $doctrine, Request $request): Response
+    #[Route('/car/search/results/', name:'app_car_list_results')]
+    public function results(CarRepository $carRepository, Request $request): Response
     {
         $search = $request->query->get('q');
 
-        $cars = $doctrine->findCarBySearch($search);
-
-
+        #$cars = $doctrine->findCarBySearch($search);
+        $queryBuilder = $carRepository->findCarBySearch($search);
+        $adapter = new QueryAdapter($queryBuilder);
+        $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
+            $adapter,
+            $request->query->get('page',1),
+            6
+        );
 
         return $this->render('car/list.html.twig',[
-                'cars' => $cars,
+                'pager' => $pagerfanta,
             ]);
 
     }

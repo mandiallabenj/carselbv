@@ -6,6 +6,7 @@ use App\Entity\Car;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query\QueryException;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use function PHPUnit\Framework\throwException;
 
@@ -43,11 +44,9 @@ class CarRepository extends ServiceEntityRepository
     }
 
     #find car by search value
-    public function findCarBySearch(string $value = null): array
+    public function findCarBySearch(string $value = null): QueryBuilder
     {
-            $queryBuilder = $this->createQueryBuilder('t')
-                ->orderBy('t.id', 'DESC');
-
+            $queryBuilder = $this->addfindBySearchQuerybuilder();
 
         if($value){
             $queryBuilder
@@ -56,13 +55,15 @@ class CarRepository extends ServiceEntityRepository
 
         }
 
-        return $queryBuilder
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult();
+        return $queryBuilder;
+
     }
 
-    public function findBySearch(){
+    public function addFindBySearchQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        $queryBuilder = $queryBuilder ?? $this->createQueryBuilder('t');
+
+        return $queryBuilder->orderBy('t.id', 'DESC');
 
     }
 

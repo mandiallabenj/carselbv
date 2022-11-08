@@ -1,5 +1,5 @@
 <div class="row row-cols-sm-2 row-cols-md-3 mb-10">
-    {%  for car in cars %}
+    {%  for car in pager %}
     <div class="col mb-4">
         <!-- Card -->
         <div class="card card-bordered shadow-none h-100">
@@ -55,4 +55,12 @@
         No Results found !
     </div>
     {% endfor %}
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-center">
+            {{ pagerfanta(pager) }}
+        </div>
+    </div>
+
 </div>

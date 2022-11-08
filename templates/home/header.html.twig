@@ -13,7 +13,7 @@
                         Catalog
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ path('app_car_list_all') }}">List View</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_car_list_results') }}">List View</a></li>
                         <li><a class="dropdown-item" href="#">Grid View</a></li>
                         {% if is_granted('ROLE_USER') %}
                         <li><a class="dropdown-item" href="{{ path('app_car_make_form') }}">Add Car Make</a></li>
