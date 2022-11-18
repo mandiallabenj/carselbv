@@ -10,7 +10,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Cars</a></li>
-                    <li class="breadcrumb-item"><a href="#">{{ car.make }}</a></li>
+                    <li class="breadcrumb-item"><a href="#">{{ car.carmake.name | default('Undefined') }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ car.title }}</li>
                 </ol>
             </nav>
@@ -35,7 +35,7 @@
                                <div class="" style="font-size: 14px;">
                                    <div class="d-flex my-4 flex-row">
                                        <div>
-                                           <p class="pe-2"> <i class="bi bi-car-front"></i> {{ car.make }}</p>
+                                           <p class="pe-2"> <i class="bi bi-car-front"></i> {{ car.carmake.name | default('Undefined') }}</p>
                                        </div>
                                        <div>
                                            <p class="pe-2">
@@ -163,7 +163,7 @@
                        <div class="card-text" style="font-size: 14px;">
                            <div class="d-flex my-4 flex-row">
                                <div>
-                                   <p class="pe-2"> <i class="bi bi-car-front"></i> {{ car.make }}</p>
+                                   <p class="pe-2"> <i class="bi bi-car-front"></i> {{ car.carmake.name | default('Undefined') }}</p>
                                </div>
                                <div>
                                    <p class="pe-2">

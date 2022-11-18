@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Car;
+use App\Entity\CarMake;
+use ContainerRZ3xMrx\getCarMake2Service;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query\QueryException;
@@ -24,6 +26,8 @@ class CarRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Car::class);
     }
+
+
 
     public function findOneCar($value)
     {
@@ -50,7 +54,8 @@ class CarRepository extends ServiceEntityRepository
 
         if($value){
             $queryBuilder
-            ->andwhere('t.title LIKE :val OR t.description LIKE :val OR t.make LIKE :val')
+            ->andwhere('t.title LIKE :val OR t.description LIKE :val OR cm.name LIKE :val')
+                ->leftJoin('t.carmake', 'cm')
                 ->setParameter('val','%' . $value . '%');
 
         }

@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Car;
+use App\Entity\CarMake;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -22,18 +25,13 @@ class CarType extends AbstractType
                     'placeholder' => 'e.g Chevrolet Tahoe'
                 ]
             ])
-            ->add('make', ChoiceType::class,[
-                'choices' => [
-                    'chevrolet' => 'chevrolet',
-                    'bmw' => 'bmw',
-                    'mercedes' => 'mercedes',
-                    'audi' => 'audi',
-                    'range rover' => 'range rover',
-                    'toyota' => 'toyota',
-                    'jaguar' => 'jaguar',
-                    'bentley' => 'bentley',
-                    'volkswagen' => 'volkswagen'
-        ]
+            ->add('carmake', EntityType::class,[
+                'class' => CarMake::class,
+                'query_builder' => function (EntityRepository $er){
+                return $er->createQueryBuilder('u')
+                    ->orderBy('u.name','ASC');
+                },
+                'choice_label' => 'name'
                 ])
             ->add('model_year')
             ->add('car_condition',ChoiceType::class,[

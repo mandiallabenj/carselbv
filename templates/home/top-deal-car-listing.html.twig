@@ -33,7 +33,11 @@
                                     <div class="d-flex flex-column">
                                     <div class="d-flex justify-content-between flex-wrap">
                                         <div>
-                                            <p class="me-3"> <i class="bi bi-car-front"></i> {{ cars.make }} {{ cars.modelYear }}</p>
+                                            <p class="me-3">
+                                                <i class="bi bi-car-front"></i>
+                                                {{ cars.carmake.name | default('') }}
+                                                {{ cars.modelYear }}
+                                            </p>
                                         </div>
 
                                         <div>

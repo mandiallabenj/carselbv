@@ -28,13 +28,13 @@
 
                     <div class="d-grid gap-2">
                         <!-- Checkboxes -->
-                        {% for i in 1..5 %}
+                        {% for carMake in carMake %}
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="menCheckbox" checked="">
-                            <label class="form-check-label d-flex" for="menCheckbox"><a class="text-secondary"> Chevy </a> <span class="ms-auto">(73)</span></label>
+                            <input class="form-check-input" type="checkbox" value="" id="menCheckbox">
+                            <label class="form-check-label d-flex" for="menCheckbox"><a class="text-secondary"> {{ carMake.name }} </a> <span class="ms-auto">(73)</span></label>
                         </div>
                             {% else %}
-                            <div class="alert alert-info">
+                            <div class="alert alert-danger">
                                 No Data!
                             </div>
                         {% endfor %}

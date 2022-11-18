@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Car;
+use App\Entity\CarMake;
+use App\Repository\CarMakeRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,10 +15,10 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(ManagerRegistry $doctrine): Response
     {
-        $allcars = $doctrine->getRepository(Car::class)->findBy([],['id' => 'DESC']);
+        $allCars = $doctrine->getRepository(Car::class)->findAll();
 
         return $this->render('home/index.html.twig', [
-            'cars'=> $allcars,
+            'cars'=> $allCars,
             'controller_name' => 'HomeController',
         ]);
     }

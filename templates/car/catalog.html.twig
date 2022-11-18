@@ -25,7 +25,13 @@
                                 <small><span style="background:#D2f4EA;" class="mb-3 badge rounded-pill text-secondary"><small>Negotiable </small> </span>
                                 </small>
                             </div>
-                            <p class="mb-1">{{ car.make | capitalize }} {{ car.modelyear }} <i class="bi bi-geo-alt"></i>{{ car.location }} </p>
+                            <p class="mb-1">
+                                <i class="bi bi-car-front"></i>
+                                {{ car.carmake.name | default('') }}
+                                {{ car.modelyear }}
+                                <i class="bi bi-geo-alt"></i>
+                                {{ car.location }}
+                            </p>
                             <small> {{ car.createdAt | ago }}</small>
                         </div>
                     </div>

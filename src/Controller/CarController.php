@@ -99,9 +99,11 @@ class CarController extends AbstractController
     }
 
     #[Route('/car/search/results/', name:'app_car_list_results')]
-    public function results(CarRepository $carRepository, Request $request): Response
+    public function results(CarRepository $carRepository, Request $request, CarMakeRepository $carMakeRepository): Response
     {
         $search = $request->query->get('q');
+
+        $carMake = $carMakeRepository->findAll();
 
         #$cars = $doctrine->findCarBySearch($search);
         $queryBuilder = $carRepository->findCarBySearch($search);
@@ -114,6 +116,7 @@ class CarController extends AbstractController
 
         return $this->render('car/list.html.twig',[
                 'pager' => $pagerfanta,
+            'carMake' => $carMake
             ]);
 
     }
@@ -143,13 +146,10 @@ class CarController extends AbstractController
         if($carMakeForm->isSubmitted() && $carMakeForm->isValid()){
             $car = $carMakeForm->getData();
 
-            $em->persist($carMake);
+            $em->persist($car);
             $em->flush();
 
             $this->addFlash('notice', 'Car Make Uploaded! Inaccuracies squashed');
-
-
-
         }
         return$this->renderForm('car/car-make-form.html.twig',[
             'carMakeForm'=>$carMakeForm,

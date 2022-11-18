@@ -19,9 +19,6 @@ class Car
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $make = null;
-
     #[ORM\Column]
     private ?int $model_year = null;
 
@@ -46,6 +43,9 @@ class Car
     #[ORM\ManyToOne(inversedBy: 'cars')]
     private ?User $user = null;
 
+    #[ORM\ManyToOne(inversedBy: 'cars')]
+    private ?CarMake $carmake = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,18 +59,6 @@ class Car
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getMake(): ?string
-    {
-        return $this->make;
-    }
-
-    public function setMake(string $make): self
-    {
-        $this->make = $make;
 
         return $this;
     }
@@ -167,6 +155,18 @@ class Car
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCarmake(): ?CarMake
+    {
+        return $this->carmake;
+    }
+
+    public function setCarmake(?CarMake $carmake): self
+    {
+        $this->carmake = $carmake;
 
         return $this;
     }
